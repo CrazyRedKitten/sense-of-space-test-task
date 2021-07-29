@@ -1,0 +1,18 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
