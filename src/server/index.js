@@ -24,10 +24,18 @@ const upload = multer({
 
 // TODO: Add post request handling
 app.post('/api/image', upload.single('photo'), async (req, res) => {
-  // TODO: Add image processing
   console.log('Recieved POST request with image');
+  // image processing
   const image = req.file.buffer;
-  const buffer = await sharp(image).flip().png().toBuffer();
+  console.log(__dirname);
+  const today = new Date();
+  console.log(today);
+  const buffer = await sharp(image)
+      // add stamp
+      .composite([{input: `${path.join(__dirname, 'assets/stamp.png')}`,
+        top: 20, left: 20}])
+      .png()
+      .toBuffer();
   const base64Data = buffer.toString('base64');
   res.send(base64Data);
   console.log('sending base64 image');
