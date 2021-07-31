@@ -16,5 +16,10 @@
   },
   "scripts": {
     "start": "node index.js"
+  },
+  "prettier":{
+      "singleQuote": true,
+       "tabWidth": 2,
+       "bracketSpacing":false
   }
 }
