@@ -1,53 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  <h1>Frontend!</h1>
-  <form enctype="multipart/form-data" action="/api/image" method="post">
-    <input id="image-file" name="photo" type="file" />
-  </form>
-  <div id='imagePlaceholder'></div>
-  <!-- TODO: ADD THREE.js -->
-  <!-- TODO: Add canvas -->
-  <script>
-    // TODO: Move Javascript to separate file(s)
-
-    // https://stackoverflow.com/questions/5587973/javascript-upload-file
-    
-    const imageInput = document.getElementById('image-file');
-
-    imageInput.addEventListener('input', uploadFile)
-
-    function uploadFile(){
-      const image = imageInput.files[0];
-
-      const formData = new FormData();
-
-      formData.append("photo", image);
-      console.log(formData);
-
-      try {
-        fetch('/api/image', { method: "POST", body: formData })
-          .then(res => res.text())
-          .then(data => {
-            const imagePlaceholder = document.getElementById('imagePlaceholder');
-            const image = new Image();
-            image.src = `data:image/png;base64,${data}`;
-            // TODO: Append image to the DOM
-            imagePlaceholder.appendChild(image);
-            // console.log(image)
-          });
-      }
-      catch (error){
-        console.error(error);
-      }
-    }
-
-  </script>
+  <h1>TODO: Navbar</h1>
+  <div id='imageForm'>
+    <h4>Please upload an image:</h4>
+    <form enctype="multipart/form-data" action="/api/image" method="post">
+      <input id="image-file" name="photo" type="file" />
+    </form>
+  </div>
+  <canvas id="scene" width="300" height="300"></canvas>
+  <script src="js/index.js"></script>
 </body>
+
 </html>
