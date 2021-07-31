@@ -9,11 +9,14 @@
 </head>
 
 <body>
-  <h1>Frontend!</h1>
-  <form enctype="multipart/form-data" action="/api/image" method="post">
-    <input id="image-file" name="photo" type="file" />
-  </form>
-  <div id='imagePlaceholder'></div>
+  <h1>TODO: Navbar</h1>
+  <div id='imageForm'>
+    <h4>Please upload an image:</h4>
+    <form enctype="multipart/form-data" action="/api/image" method="post">
+      <input id="image-file" name="photo" type="file" />
+    </form>
+  </div>
+  <canvas id="scene" width="300" height="300"></canvas>
   <script src="js/index.js"></script>
 </body>
 

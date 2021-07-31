@@ -39,6 +39,8 @@ app.post('/api/image', upload.single('photo'), async (req, res) => {
   console.log(today);
   // add stamp
   // https://sharp.pixelplumbing.com/api-composite
+  // TODO: Optimize image / lower resolution
+  // TODO: Handle errors
   const buffer = await sharp(image)
     .composite([
       {
