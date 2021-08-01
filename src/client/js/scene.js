@@ -15,6 +15,7 @@ const generateScene = (parameters) => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   // Append canvas to DOM
   document.body.appendChild(renderer.domElement);
+  scene.background = new THREE.Color( 0xffffff );
 
   let imageHolder;
   const loader = new THREE.TextureLoader();
