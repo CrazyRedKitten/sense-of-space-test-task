@@ -1,6 +1,5 @@
 // https://stackoverflow.com/questions/5587973/javascript-upload-file
 import generateScene from './scene';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const imageInput = document.getElementById('image-file');
 
