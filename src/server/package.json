@@ -17,7 +17,8 @@
     "eslint-config-google": "^0.14.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "yarn build && node index.js",
+    "build": "cd ../client && parcel build index.html --out-dir ../server/dist"
   },
   "prettier": {
     "singleQuote": true,

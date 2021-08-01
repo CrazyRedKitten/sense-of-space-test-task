@@ -11,7 +11,7 @@ const generateScene = (parameters) => {
       1000,
   );
 
-  const renderer = new THREE.WebGLRenderer({canvas: canvas});
+  const renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true});
   renderer.setSize(window.innerWidth, window.innerHeight);
   // Append canvas to DOM
   document.body.appendChild(renderer.domElement);
@@ -28,7 +28,7 @@ const generateScene = (parameters) => {
     const material = new THREE.MeshBasicMaterial({map: texture});
     imageHolder = new THREE.Mesh(imageHolderGeometry, material);
     // TODO: Dynamic scale depend on image size
-    imageHolder.scale.setScalar(0.5);
+    imageHolder.scale.setScalar(1);
     scene.add(imageHolder);
   });
 
@@ -38,7 +38,7 @@ const generateScene = (parameters) => {
     requestAnimationFrame(animate);
 
     if (imageHolder) {
-      imageHolder.rotation.x += 0.01;
+      // imageHolder.rotation.x += 0.01;
       imageHolder.rotation.y += 0.01;
     }
 
