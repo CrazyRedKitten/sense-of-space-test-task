@@ -19,6 +19,7 @@ function uploadFile() {
   formData.append('photo', image);
 
   try {
+    // TODO: Change URL
     fetch('http://localhost:3000/api/image', {method: 'POST', body: formData})
         .then((res) => res.text())
         .then((data) => {
@@ -28,7 +29,7 @@ function uploadFile() {
           // Remove form elements on success
           imageForm.remove();
           // Generate 3D scene with processed image
-          generateScene({canvas: sceneCanvas, image: image.src});
+          generateScene({canvas: sceneCanvas, image: image});
         });
   } catch (error) {
     console.error(error);
