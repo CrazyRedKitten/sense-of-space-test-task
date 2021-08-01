@@ -12,6 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors());
+app.use(express.static('dist'));
 
 // multer options
 const upload = multer({
@@ -80,10 +81,7 @@ app.post('/api/image', upload.single('photo'), async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  // TODO: Change clientDir value to dinamic instead of hardcoded
-  const clientDir =
-    '/Users/crazyredkitten/Documents/' +
-    'GitHub/sense-of-space-test-task/src/client';
+  const clientDir = '/src/server/dist';
   res.sendFile(path.join(clientDir, 'index.html'));
 });
 

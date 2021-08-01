@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --out-dir ../server/dist"
   },
   "prettier": {
     "singleQuote": true,
@@ -20,6 +20,8 @@
     "trailingComma": "all"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "bootstrap": "^5.0.2",
     "three": "^0.131.1"
   }
 }
