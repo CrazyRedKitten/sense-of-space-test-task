@@ -7,7 +7,9 @@
   "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",
   "license": "MIT",
   "scripts": {
-    "build": "cd src/server && yarn build",
-    "start": "cd src/server && yarn install && node index.js"
+    "build_client": "cd src/client && yarn prebuild && yarn build",
+    "build_server": "cd src/server & yarn install",
+    "build": "yarn build_client && yarn build_server",
+    "start": "cd src/server && node index.js"
   }
 }
