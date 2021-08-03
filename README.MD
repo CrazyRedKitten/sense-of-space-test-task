@@ -1,7 +1,23 @@
-# Sense of Space test task
+# Sense of Space Test Assignment
 
-TODO: Add project description
+## Sense of Space Full Stack Developer Suitability Test Assignment
+<!-- TODO: Add project structure -->
+## Project Structure
+    .
+    ├── src                     # Source files
+    │   ├── client              # Frontend (3D scene)
+    │   └── server              # Backend (API and Web server)
+    ├── package.json        
+    ├── LICENSE
+    └── README.md
 
-TODO: Add project structure
 
-TODO: License and personal information
+### How to run the project
+```
+yarn start
+```
+
+## License
+Licensed under the MIT License, Copyright © 2021 Aleksandr Shchilkin
+
+See [LICENSE](./LICENSE) for more information.

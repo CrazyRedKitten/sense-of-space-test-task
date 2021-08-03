@@ -18,7 +18,9 @@
   },
   "scripts": {
     "start": "yarn build && node index.js",
-    "build": "cd ../client && parcel build index.html --out-dir ../server/dist"
+    "build_client": "cd ../client && yarn install && parcel build index.html --out-dir ../server/dist",
+    "prebuild": "yarn install",
+    "build": "yarn prebuild && yarn build_client"
   },
   "prettier": {
     "singleQuote": true,
