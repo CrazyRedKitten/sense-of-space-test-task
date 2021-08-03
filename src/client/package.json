@@ -10,8 +10,9 @@
     "parcel-bundler": "^1.12.5"
   },
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html --out-dir ../server/dist"
+    "prebuild": "yarn global add parcel-bundler",
+    "dev": "yarn prebuild && parcel index.html",
+    "build": "yarn prebuild && parcel build index.html --out-dir ../server/dist"
   },
   "prettier": {
     "singleQuote": true,
