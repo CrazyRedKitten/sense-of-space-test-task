@@ -10,7 +10,7 @@
     "parcel-bundler": "^1.12.5"
   },
   "scripts": {
-    "prebuild": "yarn global add parcel-bundler",
+    "prebuild": "yarn global add parcel-bundler && yarn install",
     "dev": "yarn prebuild && parcel index.html",
     "build": "yarn prebuild && parcel build index.html --out-dir ../server/dist"
   },
