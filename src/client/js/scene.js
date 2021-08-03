@@ -1,11 +1,12 @@
 import * as THREE from 'three';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 
 const generateScene = (parameters) => {
   const {canvas, image} = parameters;
   const scene = new THREE.Scene();
 
   const camera = new THREE.PerspectiveCamera(
-      20,
+      70,
       window.innerWidth / window.innerHeight,
       0.1,
       1000,
@@ -17,6 +18,8 @@ const generateScene = (parameters) => {
   document.body.appendChild(renderer.domElement);
   scene.background = new THREE.Color( 0xffffff );
 
+  new OrbitControls( camera, renderer.domElement );
+
   let imageHolder;
   const loader = new THREE.TextureLoader();
   const texture = loader.load(image.src, () => {
@@ -27,11 +30,9 @@ const generateScene = (parameters) => {
         imageWidth/1000, imageHeight/1000, 0.01);
     const material = new THREE.MeshBasicMaterial({map: texture});
     imageHolder = new THREE.Mesh(imageHolderGeometry, material);
-    // TODO: Dynamic scale depend on image size
-    imageHolder.scale.setScalar(1);
     scene.add(imageHolder);
   });
-
+  // TODO: Add controls
   camera.position.z = 5;
 
   const animate = function() {

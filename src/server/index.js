@@ -27,19 +27,22 @@ const upload = multer({
   },
 });
 
-// TODO: document API endpoints
 /**
- * Upload a file
+ * POST
+ * Upload and process an image file
  */
 app.post('/api/image', upload.single('photo'), async (req, res) => {
   console.log('Recieved POST request with image');
   // image processing
   const image = req.file.buffer;
 
-  // TODO: Generate stamp with date
-  // TODO: Dynamic stamp size depend on image size
-  // https://flaviocopes.com/canvas-node-generate-image/
+  /**
+   * Generates a dynamic stamp image with time depending on input image size
+   * @param {Image} image - input image from frontend
+   * @return {Image} image in buffer format
+   */
   const generateStamp = (image) => {
+  // https://flaviocopes.com/canvas-node-generate-image/
     const dimensions = sizeOf(image);
     const width = dimensions.width;
     const height = dimensions.height * .08;
@@ -50,7 +53,12 @@ app.post('/api/image', upload.single('photo'), async (req, res) => {
     context.fillRect(0, 0, width, height);
 
     const today = new Date();
-    const text = `Server stamp: ${today.getHours()}:${today.getMinutes()}`;
+    // Add proper formating to time
+    const getMinutes = (today.getMinutes() < 10) ?
+     `0${today.getMinutes()}` : today.getMinutes();
+    const getHours = (today.getHours() < 10) ?
+     `0${today.getHours()}` : today.getHours();
+    const text = `Server stamp: ${getHours}:${getMinutes}`;
     context.font = `regular ${height / 2}px Poppins`;
     context.textAlign = 'center';
     context.fillStyle = '#000';
@@ -59,15 +67,12 @@ app.post('/api/image', upload.single('photo'), async (req, res) => {
     return buffer;
   };
 
-  // add stamp
-  generateStamp(image);
   // https://sharp.pixelplumbing.com/api-composite
-  // TODO: Optimize image / lower resolution
   // TODO: Handle errors
   const buffer = await sharp(image)
+      // add stamp
       .composite([
         {
-          // input: `${path.join(__dirname, 'assets/stamp.png')}`,
           input: generateStamp(image),
           top: 0,
           left: 0,
@@ -80,6 +85,7 @@ app.post('/api/image', upload.single('photo'), async (req, res) => {
   console.log('sending base64 image');
 });
 
+// Serve html page
 app.get('/', (req, res) => {
   const clientDir = '/src/server/dist';
   res.sendFile(path.join(clientDir, 'index.html'));
