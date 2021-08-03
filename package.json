@@ -8,6 +8,6 @@
   "license": "MIT",
   "scripts": {
     "build": "cd src/server && yarn build",
-    "start": "cd src/server && node index.js"
+    "start": "cd src/server && yarn install && node index.js"
   }
 }
