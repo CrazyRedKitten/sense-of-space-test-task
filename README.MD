@@ -16,7 +16,9 @@
 ```
 yarn start
 ```
-
+### TODOs
+    add **tests**
+    add **docs**
 ## License
 Licensed under the MIT License, Copyright © 2021 Aleksandr Shchilkin
 
