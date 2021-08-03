@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors());
-app.use(express.static('dist'));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // multer options
 const upload = multer({
