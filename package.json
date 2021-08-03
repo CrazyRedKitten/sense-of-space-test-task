@@ -1,12 +1,30 @@
 {
-  "name": "sense-of-space-test-task",
+  "name": "server",
   "version": "1.0.0",
-  "description": "Sense of Space Full Stack Developer Suitability Test Assignment",
-  "main": "/src/server/index.js",
-  "repository": "https://github.com/CrazyRedKitten/sense-of-space-test-task.git",
+  "main": "index.js",
   "author": "Aleksandr Shchilkin <crazyredkitten@icloud.com>",
   "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "buffer-image-size": "^0.6.4",
+    "canvas": "^2.8.0",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "sharp": "^0.28.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "eslint-config-google": "^0.14.0"
+  },
   "scripts": {
-    "start": "cd src/server && yarn start"
+    "start": "yarn build && node index.js",
+    "build_client": "cd ../client && yarn install && parcel build index.html --out-dir ../server/dist",
+    "prebuild": "yarn install",
+    "build": "yarn prebuild && yarn build_client"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2,
+    "bracketSpacing": false
   }
 }

@@ -87,8 +87,7 @@ app.post('/api/image', upload.single('photo'), async (req, res) => {
 
 // Serve html page
 app.get('/', (req, res) => {
-  const clientDir = '/src/server/dist';
-  res.sendFile(path.join(clientDir, 'index.html'));
+  res.send("Backend API");
 });
 
 app.listen(port, () => {
